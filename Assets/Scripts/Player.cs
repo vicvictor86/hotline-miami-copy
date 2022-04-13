@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,9 +13,12 @@ public class Player : MonoBehaviour
 
     private Pointer pointer;
     private Vector2 mousePosition;
+
+    private IGun gun;
     
     private void Awake()
     {
+        gun = gameObject.AddComponent<Pistol>();
         pointer = GameObject.Find("Pointer").GetComponent<Pointer>();
         rbody = GetComponent<Rigidbody2D>();
     }
@@ -45,5 +49,11 @@ public class Player : MonoBehaviour
         Vector2 newPos = currentPos + adjustedMovement * Time.fixedDeltaTime;
  
         rbody.MovePosition(newPos);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Destroy(GetComponent("Pistol"));
+        gun = gameObject.AddComponent<Shotgun>();
     }
 }
