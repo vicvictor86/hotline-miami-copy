@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,10 +6,12 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour, IGun
 {
-    // Start is called before the first frame update
+    
     public GameObject BulletPrefab { get; set; }
     public Transform FirePoint { get; set; }
     public float BulletForce { get; set; }
+
+    public List<AudioName> GunShot { get; set; }
 
     public virtual void Awake()
     {
@@ -16,6 +19,7 @@ public class Gun : MonoBehaviour, IGun
         BulletPrefab = shooting.bulletPrefab;
         FirePoint = shooting.firePoint;
         BulletForce = shooting.bulletForce;
+        GunShot = shooting.audios;
     }
 
     public void Shoot()
