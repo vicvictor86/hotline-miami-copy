@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ public class Shooting : MonoBehaviour
 
     public float bulletForce = 20f;
     private IGun gun;
+
+    public List<AudioName> audios;
 
     private void Update()
     {

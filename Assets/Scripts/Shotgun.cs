@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Shotgun : Gun, IGun
@@ -11,6 +12,10 @@ public class Shotgun : Gun, IGun
         CreateBullet(0);
         CreateBullet(angle);
         CreateBullet(-angle);
+        var audio = gameObject.AddComponent<AudioSource>();
+        var audioSource = GunShot.FirstOrDefault(gs => gs.name == "Shotgun").audioSource;
+        audio.clip = audioSource.clip;
+        audio.Play();
     }
 
     private void CreateBullet(int angle)
