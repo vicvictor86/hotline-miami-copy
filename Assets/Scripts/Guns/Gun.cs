@@ -11,8 +11,10 @@ public class Gun : MonoBehaviour, IGun
     public Transform FirePoint { get; set; }
     public float BulletForce { get; set; }
 
-    public List<AudioName> GunShot { get; set; }
+    public int BulletCount { get; set; }
 
+    public List<AudioName> GunShot { get; set; }
+    
     public virtual void Awake()
     {
         Shooting shooting = GetComponent<Shooting>();
@@ -24,6 +26,6 @@ public class Gun : MonoBehaviour, IGun
 
     public void Shoot()
     {
-        throw new NotImplementedException();
+        
     }
 }

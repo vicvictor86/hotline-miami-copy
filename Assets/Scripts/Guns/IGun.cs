@@ -8,5 +8,7 @@ public interface IGun
     public Transform FirePoint { get; set; }
     public float BulletForce { get; set; }
 
+    public int BulletCount { get; set; }
+    
     void Shoot();
 }

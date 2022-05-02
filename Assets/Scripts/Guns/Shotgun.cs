@@ -6,6 +6,11 @@ using UnityEngine;
 
 public class Shotgun : Gun, IGun
 {
+    private void Start()
+    {
+        BulletCount = 12;
+    }
+
     public new void Shoot()
     {
         int angle = 7;
@@ -16,6 +21,7 @@ public class Shotgun : Gun, IGun
         var audioSource = GunShot.FirstOrDefault(gs => gs.name == "Shotgun").audioSource;
         audio.clip = audioSource.clip;
         audio.Play();
+        BulletCount -= 3;
     }
 
     private void CreateBullet(int angle)

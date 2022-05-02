@@ -16,6 +16,13 @@ public class Shooting : MonoBehaviour
 
     public List<AudioName> audios;
 
+    public UIManager UIManager;
+
+    private void Start()
+    {
+        UIManager.UpdateBullet();
+    }
+
     private void Update()
     {
         gun = GetComponent<IGun>();
@@ -23,7 +30,11 @@ public class Shooting : MonoBehaviour
 
     void OnShoot(InputValue value)
     {
-        gun.Shoot();
+        if (gun.BulletCount > 0)
+        {
+            gun.Shoot();
+            UIManager.UpdateBullet();
+        }
     }
 
 }
