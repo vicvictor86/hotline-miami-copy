@@ -6,6 +6,11 @@ using UnityEngine;
 
 public class Pistol : Gun, IGun
 {
+    private void Start()
+    {
+        BulletCount = 2;
+    }
+
     public new void Shoot()
     {
         var audio = gameObject.AddComponent<AudioSource>();
@@ -15,6 +20,6 @@ public class Pistol : Gun, IGun
         GameObject bullet = Instantiate(BulletPrefab, FirePoint.position, FirePoint.rotation);
         var rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(FirePoint.right * BulletForce, ForceMode2D.Impulse);
-        
+        BulletCount--;
     }
 }
